@@ -9,5 +9,6 @@ import { Component } from '@angular/core';
   
 })
 export class ArticleComponentComponent {
-
+  title = 'Titre personnaliser';
+  content = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nihil velit modiaut neque illum obcaecati odio dicta maxime, assumenda fuga nesciunt nemonobis ullam earum optio, cumque cum ipsam. Tempora.';
 }
