@@ -1,0 +1,15 @@
+<div class="card">
+  <h1>{{ article.title }}</h1>
+  <p>
+    {{ article.author }}
+  </p>
+  <p *ngIf="article.isPublished">
+    {{ article.content }}
+  </p>
+  <img [src]="article.image" [alt]="article.title" />
+  <input type="text" [(ngModel)]="article.comment" />
+  <p>
+    {{ article.comment }}
+  </p>
+  <button (click)="togglePublication()">{{ article.isPublished ? 'Despublier' : 'Publier' }}</button>
+</div>
