@@ -1,0 +1,72 @@
+// Variables de couleurs pour une meilleure gestion
+$primary-color: #9e2279;
+$secondary-color: #dd0330;
+$text-color: #424242;
+$background-color: #f4f4f9;
+$border-color: #e0e0e0;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+main.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: $background-color;
+  min-height: 100vh;
+}
+
+.content {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.main__title {
+  font-size: 2.5rem;
+  color: $primary-color;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.main__subtitle {
+  font-size: 1.2rem;
+  color: darken($text-color, 10%);
+  margin-bottom: 20px;
+}
+
+.divider {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid $border-color;
+}
+
+app-article {
+  width: 100%;
+  display: block;
+}
+
+// Effets responsifs
+@media (max-width: 768px) {
+  .main__title {
+    font-size: 2rem;
+  }
+  .divider {
+    padding: 15px;
+  }
+}
