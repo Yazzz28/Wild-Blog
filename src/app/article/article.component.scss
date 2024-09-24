@@ -1,8 +1,8 @@
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Trois colonnes égales */
-  gap: 20px; /* Espace entre les cartes */
-  justify-items: center; /* Centrer les cartes dans leur colonne */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
   margin: 20px;
 }
 
@@ -11,7 +11,7 @@
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  max-width: 350px; /* Réduction de la largeur */
+  max-width: 350px;
   margin: 20px auto;
   font-family: 'Roboto', sans-serif;
   border: 1px solid #e0e0e0;
@@ -24,7 +24,7 @@
 }
 
 h1 {
-  font-size: 1.6rem; /* Taille de police réduite */
+  font-size: 1.6rem;
   margin-bottom: 15px;
   color: #dd0330;
   text-align: center;
@@ -32,7 +32,7 @@ h1 {
 }
 
 p {
-  font-size: 0.9rem; /* Réduction de la taille du texte */
+  font-size: 0.9rem;
   line-height: 1.5;
   color: #555;
 }
@@ -40,13 +40,13 @@ p {
 img {
   width: 100%;
   height: auto;
-  border-radius: 6px; /* Taille ajustée pour correspondre à la taille réduite */
+  border-radius: 6px;
   margin-top: 10px;
 }
 
 input[type="text"] {
   width: 100%;
-  padding: 8px; /* Moins d'espace pour un look plus compact */
+  padding: 8px;
   margin-top: 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -62,7 +62,7 @@ input[type="text"]:focus {
 
 button {
   width: 100%;
-  padding: 10px; /* Taille de bouton réduite */
+  padding: 10px;
   background-color: #9e2279;
   color: #fff;
   font-size: 0.9rem;

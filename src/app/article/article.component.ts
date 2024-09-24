@@ -11,7 +11,6 @@ import { Article } from '../models/article.model';
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent {
-  // Typage du tableau d'articles avec l'interface Article
   articles: Article[] = [
     {
       title: 'Titre de l\'article 1',
@@ -39,7 +38,6 @@ export class ArticleComponent {
     }
   ];
 
-  // Méthode pour basculer la publication de l'article
   togglePublication(index: number): void {
     this.articles[index].isPublished = !this.articles[index].isPublished;
   }
