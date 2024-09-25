@@ -19,10 +19,10 @@
     <button (click)="togglePublication(i)">
       {{ article.isPublished ? 'Dépublier' : 'Publier' }}
     </button>
+    <button>View</button>
 
     <div *ngIf="user.isAdmin">
       <button>Edit</button>
-      <button>View</button>
     </div>
   </div>
 </div>
