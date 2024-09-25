@@ -1,14 +1,20 @@
-<div *ngIf="user.isAdmin">
+@if(user.isAdmin){
+<div>
   <h1>Bonjour, {{ user.name }}</h1>
 </div>
-
+}
 <div class="cards-container">
-  <div class="card" *ngFor="let article of articles; let i = index">
+  @for (article of articles; track $index) {
+  <div class="card">
     <!-- Le titre de l'article, en rouge si l'utilisateur est admin -->
-    <h1 [ngStyle]="{ 'color': user.isAdmin ? 'red' : 'black' }">{{ article.title }}</h1>
-    
+    <h1 [ngStyle]="{ color: user.isAdmin ? 'red' : 'black' }">
+      {{ article.title }}
+    </h1>
+
     <p>{{ article.author }}</p>
-    <p *ngIf="article.isPublished">{{ article.content }}</p>
+    @if(article.isPublished){
+    <p>{{ article.content }}</p>
+    }
     <img [src]="article.image" [alt]="article.title" />
     <input
       type="text"
@@ -16,19 +22,23 @@
       placeholder="Laissez un commentaire..."
     />
     <p>{{ article.comment }}</p>
-    <button (click)="togglePublication(i)">
-      {{ article.isPublished ? 'Dépublier' : 'Publier' }}
+    <button (click)="togglePublication($index)">
+      {{ article.isPublished ? "Dépublier" : "Publier" }}
     </button>
     <button>View</button>
 
-    <div *ngIf="user.isAdmin">
+    @if(user.isAdmin){
+    <div>
       <button>Edit</button>
     </div>
+    }
   </div>
+}
 </div>
+
 
 <div>
   <button (click)="toggleIsAdmin()">
-    {{ user.isAdmin ? 'Désactiver' : 'Activer' }} le mode admin
+    {{ user.isAdmin ? "Désactiver" : "Activer" }} le mode admin
   </button>
 </div>
