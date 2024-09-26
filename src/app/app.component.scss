@@ -1,72 +1,88 @@
-// Variables de couleurs pour une meilleure gestion
-$primary-color: #9e2279;
-$secondary-color: #dd0330;
-$text-color: #424242;
-$background-color: #f4f4f9;
-$border-color: #e0e0e0;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.popular-article {
+  font-size: 1.5em;
+  text-shadow: 2px 2px 5px gray;
+  font-weight: bold;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: $background-color;
-  color: $text-color;
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin: 20px;
 }
 
-main.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  background-color: $background-color;
-  min-height: 100vh;
-}
-
-.content {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.main__title {
-  font-size: 2.5rem;
-  color: $primary-color;
-  margin-bottom: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.main__subtitle {
-  font-size: 1.2rem;
-  color: darken($text-color, 10%);
-  margin-bottom: 20px;
-}
-
-.divider {
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  background-color: white;
+.card {
+  background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  border: 1px solid $border-color;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 350px;
+  margin: 20px auto;
+  font-family: "Roboto", sans-serif;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-app-article {
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #dd0330;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+img {
   width: 100%;
-  display: block;
+  height: auto;
+  border-radius: 6px;
+  margin-top: 10px;
 }
 
-// Effets responsifs
-@media (max-width: 768px) {
-  .main__title {
-    font-size: 2rem;
-  }
-  .divider {
-    padding: 15px;
-  }
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input[type="text"]:focus {
+  border-color: #9e2279;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #9e2279;
+  color: #fff;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #dd0330;
+}
+
+button:active {
+  background-color: #b7002c;
 }

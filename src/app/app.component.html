@@ -1,13 +1,39 @@
 <main class="main">
   <div class="content">
-    <h1 class="main__title">
-      Bienvenue sur le {{ title }} de {{ name }}
-    </h1>
+    <h1 class="main__title">Bienvenue sur le {{ title }} de {{ name }}</h1>
     <p class="main__subtitle">
       Découvrez nos derniers articles et bien plus encore.
     </p>
   </div>
   <div class="divider">
-    <app-article></app-article>
+    <div class="cards-container">
+      @for (article of articles; track $index) { @if (article.isPublished) {
+      <div class="card">
+        <p
+          [ngClass]="{ 'popular-article': article.likes > 100 }"
+          [ngStyle]="{ color: article.likes > 150 ? 'green' : 'black' }"
+        >
+          {{ article.likes }}
+        </p>
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.author }}</p>
+        <p>
+          {{ article.content }}
+        </p>
+        <img [src]="article.image" [alt]="article.title" />
+        <input
+          type="text"
+          [(ngModel)]="article.comment"
+          placeholder="Laissez un commentaire..."
+        />
+        <p>{{ article.comment }}</p>
+        <button (click)="togglePublication($index)">
+          {{ article.isPublished ? "Dépublier" : "Publier" }}
+        </button>
+      </div>
+      } } @if (isNoPublication()) {
+      <p>aucun article publier</p>
+      }
+    </div>
   </div>
 </main>
