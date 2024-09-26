@@ -5,4 +5,5 @@ export interface Article {
   image: string;
   isPublished: boolean;
   comment: string;
+  likes: number;
 }
