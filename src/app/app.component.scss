@@ -1,88 +1,103 @@
-.popular-article {
-  font-size: 1.5em;
-  text-shadow: 2px 2px 5px gray;
-  font-weight: bold;
+// Variables
+$primary-color: #3498db; // Couleur principale
+$secondary-color: #2ecc71; // Couleur secondaire
+$text-color: #333; // Couleur du texte
+$background-color: #f9f9f9; // Couleur de fond
+$font-family: 'Arial', sans-serif; // Police de caractère
+$border-radius: 5px; // Rayon de bordure
+
+// Global Styles
+body {
+  font-family: $font-family;
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6; // Améliore la lisibilité
 }
 
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  justify-items: center;
-  margin: 20px;
-}
-
-.card {
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+// Main Container Styles
+.main {
+  max-width: 1200px; // Largeur maximale
+  margin: 0 auto; // Centrage
   padding: 20px;
-  max-width: 350px;
-  margin: 20px auto;
-  font-family: "Roboto", sans-serif;
-  border: 1px solid #e0e0e0;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  .content {
+    text-align: center; // Centrer le texte
+    margin-bottom: 20px;
+
+    .main__title {
+      font-size: 2.5rem; // Taille du titre
+      color: $primary-color; // Couleur du titre
+      margin-bottom: 10px; // Marge inférieure
+      font-weight: bold; // Gras
+    }
+
+    .main__subtitle {
+      font-size: 1.25rem; // Taille du sous-titre
+      color: $text-color; // Couleur du sous-titre
+      margin-bottom: 20px; // Marge inférieure
+    }
+  }
+
+  .divider {
+    margin: 30px 0; // Marge
+    border-top: 2px solid $secondary-color; // Bordure supérieure
+    padding-top: 20px; // Rembourage supérieur
+  }
+
+  // Link Styles
+  a {
+    text-decoration: none; // Supprime le soulignement
+    margin: 0 15px; // Marges latérales
+    padding: 10px 15px; // Rembourage
+    border-radius: $border-radius; // Bordure arrondie
+    transition: background-color 0.3s, color 0.3s; // Transition
+
+    &.home-link {
+      color: $primary-color; // Couleur pour le lien d'accueil
+
+      &:hover {
+        background-color: lighten($primary-color, 20%); // Effet au survol
+      }
+    }
+
+    &.contact-link {
+      color: $secondary-color; // Couleur pour le lien de contact
+
+      &:hover {
+        background-color: lighten($secondary-color, 20%); // Effet au survol
+      }
+    }
+
+    &.sign-in {
+      color: #fff; // Couleur du texte pour le lien de connexion
+      background-color: $primary-color; // Couleur de fond
+
+      &:hover {
+        background-color: darken($primary-color, 10%); // Effet au survol
+      }
+    }
+  }
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
+// Responsive Styles
+@media (max-width: 768px) {
+  .main {
+    padding: 10px; // Réduire le rembourrage pour les petits écrans
 
-h1 {
-  font-size: 1.6rem;
-  margin-bottom: 15px;
-  color: #dd0330;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
+    .content {
+      .main__title {
+        font-size: 2rem; // Réduire la taille du titre
+      }
 
-p {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #555;
-}
+      .main__subtitle {
+        font-size: 1rem; // Réduire la taille du sous-titre
+      }
+    }
 
-img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-top: 10px;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  margin-top: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  box-sizing: border-box;
-  transition: border-color 0.2s ease-in-out;
-}
-
-input[type="text"]:focus {
-  border-color: #9e2279;
-  outline: none;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #9e2279;
-  color: #fff;
-  font-size: 0.9rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-button:hover {
-  background-color: #dd0330;
-}
-
-button:active {
-  background-color: #b7002c;
+    a {
+      margin: 0 10px; // Réduire les marges des liens
+    }
+  }
 }
