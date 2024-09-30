@@ -13,6 +13,7 @@ import {
   imports: [ReactiveFormsModule],
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
+  styleUrls: ['./signup-form.component.scss'],
 })
 export class SignupFormComponent {
   // Injecting FormBuilder using Angular's inject function
@@ -49,7 +50,7 @@ export class SignupFormComponent {
         hasNumber &&
         hasSpecialChar;
 
-       return isValid ? null : { insecurePassword: true };
+       return isValid ? null : { securePassword: true };
     };
   }
 
