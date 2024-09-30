@@ -1,8 +1,7 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Article } from '../models/article.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -12,15 +11,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent {
-  // Injection du service ActivatedRoute pour capturer les paramètres de la route
-  router: Router = inject(Router);
-
-  // Article sélectionné selon l'ID dans l'URL
   @Input() article?: Article;
 
-  goToDetails() {
+  @Output() liked = new EventEmitter<string>();
+
+  togglePublication(): void {
     if (this.article) {
-      this.router.navigate(['/article-details', this.article.id]);
+      this.article.isPublished = !this.article.isPublished;
     }
   }
+
+  sendNotification(): void {
+    if (this.article) {
+      this.liked.emit(`L'article ${this.article.title} vient d'être liké`);
+    }
+  }  
 }

@@ -15,7 +15,10 @@
       placeholder="Laissez un commentaire..."
     />
     <p>{{ article.comment }}</p>
-    <a (click)="goToDetails()">Voir l'article</a>
+    <button (click)="sendNotification()">Liker</button>
+    <button (click)="togglePublication()">
+      {{ article.isPublished ? "Dépublier" : "Publier" }}
+    </button>
   </div>
 </div>
 }

@@ -46,8 +46,10 @@ export class HomePageComponent {
     },
   ];
 
-  togglePublication(i: number): void {
-    this.articles[i].isPublished = !this.articles[i].isPublished;
+  liked: string = '';
+
+  handleNotification(message: any) {
+    this.liked = message;
   }
 
   isNoPublication(): boolean {
