@@ -1,9 +1,8 @@
-
+{{ liked}}
 
 <div class="cards-container">
   @for (article of articles; track article.id) { @if (article.isPublished) {
-  <app-article (liked)="handleNotification($event)" [article]="article"></app-article>
-  {{ liked }}  
+  <app-article (liked)="handleNotification($event)" [article]="article"></app-article> 
   } } @if (isNoPublication()) {
   <p>aucun article publier</p>
   }
