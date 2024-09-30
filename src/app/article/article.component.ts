@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Article } from '../models/article.model'; // Assurez-vous que le modèle est bien défini
@@ -11,11 +11,11 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss'],
 })
-export class ArticleComponent {
+export class ArticleComponent implements OnInit {
   // Injection du service ActivatedRoute pour capturer les paramètres de la route
   route: ActivatedRoute = inject(ActivatedRoute);
   articleId!: number;
-  
+
   // Liste des articles disponibles
   articles: Article[] = [
     {
@@ -62,7 +62,9 @@ export class ArticleComponent {
       this.articleId = Number(params.get('id'));
 
       // Recherche de l'article correspondant
-      this.article = this.articles.find((article) => article.id === this.articleId);
+      this.article = this.articles.find(
+        (article) => article.id === this.articleId
+      );
     });
   }
 
