@@ -1,5 +1,5 @@
+@if (article){
 <div class="cards-container">
-  @for (article of articles; track $index) {
   <div class="card">
     <h1>{{ article.title }}</h1>
     <p>{{ article.author }}</p>
@@ -13,9 +13,9 @@
       placeholder="Laissez un commentaire..."
     />
     <p>{{ article.comment }}</p>
-    <button (click)="togglePublication($index)">
+    <button (click)="togglePublication()">
       {{ article.isPublished ? "Dépublier" : "Publier" }}
     </button>
   </div>
-  }
 </div>
+}
