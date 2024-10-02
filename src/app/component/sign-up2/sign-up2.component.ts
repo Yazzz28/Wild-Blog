@@ -1,37 +1,34 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { User } from '../../models/user.model';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-sign-up2',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  selector: 'app-sign-up2',
   templateUrl: './sign-up2.component.html',
   styleUrls: ['./sign-up2.component.scss'],
+  imports: [ ReactiveFormsModule ]
 })
 export class SignUp2Component {
-  signUpForm: FormGroup;
+  userForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
-    // Initialize the form with FormBuilder
-    this.signUpForm = this.fb.group({
+    this.userForm = this.fb.group({
       userName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
       address: this.fb.group({
-        city: ['', Validators.required],
         street: ['', Validators.required],
-        zip: ['', Validators.required]
+        city: ['', Validators.required],
+        zipCode: ['', Validators.required]
+      }),
+      credentials: this.fb.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]]
       })
     });
   }
 
   onSubmit() {
-    if (this.signUpForm.valid) {
-      const newUser: User = this.signUpForm.value;
-      console.log('User registered:', newUser);
+    if (this.userForm.valid) {
+      console.log('Form submitted:', this.userForm.value);
     } else {
       console.log('Form is invalid');
     }

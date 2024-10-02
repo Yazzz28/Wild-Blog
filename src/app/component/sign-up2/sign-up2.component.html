@@ -1,8 +1,4 @@
-<form
-  [formGroup]="signUpForm"
-  (ngSubmit)="onSubmit()"
-  class="registration-form"
->
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="registration-form">
   <label for="userName">Nom d'utilisateur</label>
   <input
     formControlName="userName"
@@ -12,43 +8,8 @@
     required
   />
 
-  <label for="email">Email</label>
-  <input
-    formControlName="email"
-    type="email"
-    id="email"
-    class="input-field"
-    required
-  />
-
-  <label for="password">Mot de passe</label>
-  <input
-    formControlName="password"
-    type="password"
-    id="password"
-    class="input-field"
-    required
-  />
-
-  <label for="confirmPassword">Confirmer le mot de passe</label>
-  <input
-    formControlName="confirmPassword"
-    type="password"
-    id="confirmPassword"
-    class="input-field"
-    required
-  />
-
+  <!-- Address fields grouped in a FormGroup -->
   <div formGroupName="address">
-    <label for="city">Ville</label>
-    <input
-      formControlName="city"
-      type="text"
-      id="city"
-      class="input-field"
-      required
-    />
-
     <label for="street">Rue</label>
     <input
       formControlName="street"
@@ -58,26 +19,60 @@
       required
     />
 
-    <label for="zip">Code postal</label>
+    <label for="city">Ville</label>
     <input
-      formControlName="zip"
+      formControlName="city"
       type="text"
-      id="zip"
+      id="city"
+      class="input-field"
+      required
+    />
+
+    <label for="zipCode">Code postal</label>
+    <input
+      formControlName="zipCode"
+      type="text"
+      id="zipCode"
       class="input-field"
       required
     />
   </div>
 
-  <button type="submit" class="submit-btn">S'inscrire</button>
+  <!-- Credentials FormGroup for email and password -->
+  <div formGroupName="credentials">
+    <label for="email">Email</label>
+    <input
+      formControlName="email"
+      type="email"
+      id="email"
+      class="input-field"
+      required
+    />
+
+    <label for="password">Mot de passe</label>
+    <input
+      formControlName="password"
+      type="password"
+      id="password"
+      class="input-field"
+      required
+    />
+  </div>
+
+  <button type="submit" [disabled]="!userForm.valid" class="submit-btn">
+    S'inscrire
+  </button>
 </form>
 
-@if (signUpForm.valid) {
+<!-- Display form values when valid and submitted -->
+@if (userForm.valid) {
 <div>
   <h3>Utilisateur créé :</h3>
-  <p>Nom d'utilisateur : {{ signUpForm.value.userName }}</p>
-  <p>Email : {{ signUpForm.value.email }}</p>
-  <p>Ville : {{ signUpForm.value.address.city }}</p>
-  <p>Rue : {{ signUpForm.value.address.street }}</p>
-  <p>Code postal : {{ signUpForm.value.address.zip }}</p>
+  <p>Nom d'utilisateur : {{ userForm.value.userName }}</p>
+  <p>Email : {{ userForm.value.credentials.email }}</p>
+  <p>Mot de passe : {{ userForm.value.credentials.password }}</p>
+  <p>Ville : {{ userForm.value.address.city }}</p>
+  <p>Rue : {{ userForm.value.address.street }}</p>
+  <p>Code postal : {{ userForm.value.address.zipCode }}</p>
 </div>
 }
