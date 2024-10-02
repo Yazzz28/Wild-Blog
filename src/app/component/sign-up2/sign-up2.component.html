@@ -1,12 +1,23 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="registration-form">
   <label for="userName">Nom d'utilisateur</label>
   <input
-    formControlName="userName"
+    formControlName="username"
     type="text"
     id="userName"
     class="input-field"
     required
   />
+  <!-- Error message for username -->
+  @if (userForm.get('username')?.invalid && userForm.get('username')?.touched) {
+    <div class="error-msg">
+      @if (userForm.get('username')?.errors?.['required']) {
+        <div>Le nom d'utilisateur est requis.</div>
+      }
+      @if (userForm.get('username')?.errors?.['minlength']) {
+        <div>Le nom d'utilisateur doit avoir au moins 4 caractères.</div>
+      }
+    </div>
+  }
 
   <!-- Address fields grouped in a FormGroup -->
   <div formGroupName="address">
@@ -18,6 +29,14 @@
       class="input-field"
       required
     />
+    <!-- Error message for street -->
+    @if (userForm.get('address.street')?.invalid && userForm.get('address.street')?.touched) {
+      <div class="error-msg">
+        @if (userForm.get('address.street')?.errors?.['required']) {
+          <div>La rue est requise.</div>
+        }
+      </div>
+    }
 
     <label for="city">Ville</label>
     <input
@@ -27,6 +46,14 @@
       class="input-field"
       required
     />
+    <!-- Error message for city -->
+    @if (userForm.get('address.city')?.invalid && userForm.get('address.city')?.touched) {
+      <div class="error-msg">
+        @if (userForm.get('address.city')?.errors?.['required']) {
+          <div>La ville est requise.</div>
+        }
+      </div>
+    }
 
     <label for="zipCode">Code postal</label>
     <input
@@ -36,6 +63,14 @@
       class="input-field"
       required
     />
+    <!-- Error message for zipCode -->
+    @if (userForm.get('address.zipCode')?.invalid && userForm.get('address.zipCode')?.touched) {
+      <div class="error-msg">
+        @if (userForm.get('address.zipCode')?.errors?.['required']) {
+          <div>Le code postal est requis.</div>
+        }
+      </div>
+    }
   </div>
 
   <!-- Credentials FormGroup for email and password -->
@@ -48,6 +83,17 @@
       class="input-field"
       required
     />
+    <!-- Error message for email -->
+    @if (userForm.get('credentials.email')?.invalid && userForm.get('credentials.email')?.touched) {
+      <div class="error-msg">
+        @if (userForm.get('credentials.email')?.errors?.['required']) {
+          <div>L'email est requis.</div>
+        }
+        @if (userForm.get('credentials.email')?.errors?.['email']) {
+          <div>L'email n'est pas valide.</div>
+        }
+      </div>
+    }
 
     <label for="password">Mot de passe</label>
     <input
@@ -57,6 +103,14 @@
       class="input-field"
       required
     />
+    <!-- Error message for password -->
+    @if (userForm.get('credentials.password')?.invalid && userForm.get('credentials.password')?.touched) {
+      <div class="error-msg">
+        @if (userForm.get('credentials.password')?.errors?.['required']) {
+          <div>Le mot de passe est requis.</div>
+        }
+      </div>
+    }
   </div>
 
   <button type="submit" [disabled]="!userForm.valid" class="submit-btn">
@@ -64,15 +118,15 @@
   </button>
 </form>
 
-<!-- Display form values when valid and submitted -->
+<!-- Display user information after form is valid -->
 @if (userForm.valid) {
-<div>
-  <h3>Utilisateur créé :</h3>
-  <p>Nom d'utilisateur : {{ userForm.value.userName }}</p>
-  <p>Email : {{ userForm.value.credentials.email }}</p>
-  <p>Mot de passe : {{ userForm.value.credentials.password }}</p>
-  <p>Ville : {{ userForm.value.address.city }}</p>
-  <p>Rue : {{ userForm.value.address.street }}</p>
-  <p>Code postal : {{ userForm.value.address.zipCode }}</p>
-</div>
+  <div>
+    <h3>Utilisateur créé :</h3>
+    <p>Nom d'utilisateur : {{ userForm.value.username }}</p>
+    <p>Email : {{ userForm.value.credentials.email }}</p>
+    <p>Mot de passe : {{ userForm.value.credentials.password }}</p>
+    <p>Ville : {{ userForm.value.address.city }}</p>
+    <p>Rue : {{ userForm.value.address.street }}</p>
+    <p>Code postal : {{ userForm.value.address.zipCode }}</p>
+  </div>
 }
