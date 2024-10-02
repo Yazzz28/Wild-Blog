@@ -1,0 +1,109 @@
+// Couleurs Principales
+$primary-color: #007bff; // Couleur principale
+$hover-color: darken($primary-color, 10%); // Couleur au survol
+$text-color: #333; // Couleur du texte
+$link-color: $primary-color; // Couleur des liens
+$link-hover-color: $hover-color; // Couleur des liens au survol
+$background-color: #f9f9f9; // Couleur de fond générale
+
+// Couleurs pour les Cartes d'Article
+$card-bg-color: #ffffff; // Couleur de fond des cartes
+$card-border-color: #e0e0e0; // Couleur de la bordure des cartes
+$card-shadow: rgba(0, 0, 0, 0.1); // Ombre des cartes
+$card-hover-bg: #f9f9f9; // Couleur de fond au survol des cartes
+$author-color: #555; // Couleur pour le nom de l'auteur
+$content-color: $text-color; // Couleur pour le contenu des articles (réutilisation de la couleur de texte)
+
+// Couleurs pour les Notifications
+$notification-bg-color: #f0f8ff; // Couleur de fond de la notification
+$notification-border-color: $primary-color; // Couleur de la bordure de la notification
+$notification-text-color: $text-color; // Couleur du texte de la notification
+$notification-close-color: #ff0000; // Couleur du bouton de fermeture
+
+// Conteneur des cartes d'articles
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+// Style des cartes
+.card {
+  background-color: $card-bg-color;
+  border: 1px solid $card-border-color;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px $card-shadow;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $card-hover-bg;
+  }
+
+  h1 {
+    font-size: 20px;
+    color: $text-color;
+    margin: 0 0 10px;
+  }
+
+  .author {
+    color: $author-color;
+    font-size: 14px;
+    margin: 0 0 10px;
+  }
+
+  .content {
+    color: $content-color;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid $card-border-color;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+
+  .toggle-pub-btn {
+    background-color: $notification-border-color;
+  }
+}
+
+// Style des liens dans les articles
+.article-link {
+  color: $link-color;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  padding: 10px;
+  margin-top: 10px;
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}

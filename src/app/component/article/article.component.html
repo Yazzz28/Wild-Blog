@@ -1,0 +1,23 @@
+@if (article) {
+<div class="cards-container">
+  <div class="card">
+    <h1>{{ article.title }}</h1>
+    <p class="author">{{ article.author }}</p>
+    @if (article.isPublished) {
+    <p class="content">{{ article.content }}</p>
+    }
+    <img class="article-image" [src]="article.image" [alt]="article.title" />
+    <input
+      type="text"
+      [(ngModel)]="article.comment"
+      placeholder="Laissez un commentaire..."
+    />
+    <p>{{ article.comment }}</p>
+    <button class="like-btn" (click)="sendNotification()">Liker</button>
+    <button class="toggle-pub-btn" (click)="togglePublication()">
+      {{ article.isPublished ? "Dépublier" : "Publier" }}
+    </button>
+    <a class="article-link" [routerLink]="['/article', article.id]">Voir l'article</a>
+  </div>
+</div>
+}

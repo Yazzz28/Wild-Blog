@@ -1,0 +1,114 @@
+// Couleurs Principales
+$primary-color: #007bff; // Couleur principale
+$hover-color: darken($primary-color, 10%); // Couleur au survol
+$text-color: #333; // Couleur du texte
+$link-color: $primary-color; // Couleur des liens
+$link-hover-color: $hover-color; // Couleur des liens au survol
+$background-color: #f9f9f9; // Couleur de fond générale
+
+// Couleurs pour les Cartes d'Article
+$card-bg-color: #ffffff; // Couleur de fond des cartes
+$card-border-color: #e0e0e0; // Couleur de la bordure des cartes
+$card-shadow: rgba(0, 0, 0, 0.1); // Ombre des cartes
+$card-hover-bg: #f9f9f9; // Couleur de fond au survol des cartes
+$author-color: #555; // Couleur pour le nom de l'auteur
+$content-color: $text-color; // Couleur pour le contenu des articles (réutilisation de la couleur de texte)
+
+// Couleurs pour les Notifications
+$notification-bg-color: #f0f8ff; // Couleur de fond de la notification
+$notification-border-color: $primary-color; // Couleur de la bordure de la notification
+$notification-text-color: $text-color; // Couleur du texte de la notification
+$notification-close-color: #ff0000; // Couleur du bouton de fermeture
+
+
+// Styles pour la carte d'article
+.cards-container {
+  display: flex; // Affichage flexible pour une disposition réactive
+  flex-direction: column; // Disposition verticale des cartes
+  margin: 20px; // Marge autour de la carte
+}
+
+.card {
+  background-color: $card-bg-color; // Couleur de fond de la carte
+  border: 1px solid $card-border-color; // Bordure de la carte
+  border-radius: 8px; // Coins arrondis
+  box-shadow: 0 2px 4px $card-shadow; // Ombre pour effet de profondeur
+  padding: 15px; // Rembourrage interne
+  margin-bottom: 15px; // Marge entre les cartes
+  transition: background-color 0.3s ease; // Transition au survol
+
+  &:hover {
+    background-color: $card-hover-bg; // Couleur de fond au survol
+  }
+
+  h1 {
+    font-size: 20px; // Taille de la police pour le titre
+    color: $text-color; // Couleur du texte
+    margin: 0 0 10px; // Marges pour espacement
+  }
+
+  .author {
+    color: $author-color; // Couleur pour le nom de l'auteur
+    font-size: 14px; // Taille de la police
+    margin: 0 0 10px; // Marges pour espacement
+  }
+
+  .content {
+    color: $content-color; // Couleur du contenu
+    font-size: 16px; // Taille de la police
+    margin-bottom: 10px; // Marges pour espacement
+  }
+
+  .article-image {
+    width: 100%; // Largeur maximale
+    height: auto; // Hauteur automatique pour conserver le ratio
+    border-radius: 5px; // Coins arrondis pour l'image
+    margin-bottom: 10px; // Marge inférieure
+  }
+
+  input[type="text"] {
+    width: calc(100% - 20px); // Largeur de l'input
+    padding: 10px; // Rembourrage interne
+    border: 1px solid $card-border-color; // Bordure
+    border-radius: 4px; // Coins arrondis
+    margin-bottom: 10px; // Marge inférieure
+  }
+
+  button {
+    background-color: $primary-color; // Couleur de fond du bouton
+    color: white; // Couleur du texte
+    border: none; // Pas de bordure
+    border-radius: 4px; // Coins arrondis
+    padding: 10px 15px; // Rembourrage
+    cursor: pointer; // Curseur pointeur
+    transition: background-color 0.3s ease; // Transition pour le survol
+
+    &.like-btn {
+      margin-right: 10px; // Marge entre les boutons
+    }
+
+    &:hover {
+      background-color: $hover-color; // Couleur au survol
+    }
+  }
+
+  .toggle-pub-btn {
+    background-color: $notification-border-color; // Couleur de fond pour le bouton de publication
+  }
+}
+
+.article-link {
+  color: $link-color; // Couleur des liens
+  text-decoration: none; // Pas de soulignement
+  font-weight: bold; // Mettre le lien en gras
+  display: inline-block; // Affichage en bloc pour le padding
+
+  padding: 10px; // Rembourrage interne pour le lien
+  margin-top: 10px; // Marge supérieure pour l'espacement
+
+  // Effet au survol
+  &:hover {
+    color: $link-hover-color; // Couleur au survol
+    text-decoration: underline; // Soulignement au survol
+  }
+}

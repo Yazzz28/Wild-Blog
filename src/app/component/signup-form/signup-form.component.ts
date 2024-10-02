@@ -16,10 +16,8 @@ import {
   styleUrls: ['./signup-form.component.scss'],
 })
 export class SignupFormComponent {
-  // Injecting FormBuilder using Angular's inject function
   formBuilder = inject(FormBuilder);
 
-  // Defining the signUpForm form group with nested passwords group
   signUpForm = this.formBuilder.group({
     firstname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
     lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
@@ -33,12 +31,10 @@ export class SignupFormComponent {
     ),
   });
 
-  // Custom password security validator (example of a basic rule)
   securePasswordValidator() {
     return (control: AbstractControl) => {
       const value = control.value;
       if (!value) return null;
-      // Example: at least 8 characters, 1 uppercase, 1 lowercase, and 1 number and 1 special character
       const hasUpperCase = /[A-Z]/.test(value);
       const hasLowerCase = /[a-z]/.test(value);
       const hasNumber = /\d/.test(value);
@@ -54,7 +50,6 @@ export class SignupFormComponent {
     };
   }
 
-  // Custom validator to check if password and confirmPassword match
   passwordMatchValidator(): ValidatorFn {
     return (formGroup: AbstractControl): ValidationErrors | null => {
       const password = formGroup.get('password')?.value;
@@ -63,7 +58,6 @@ export class SignupFormComponent {
     };
   }
 
-  // Function triggered on form submission
   onSubmit() {
     if (this.signUpForm.valid) {
       console.log('Form Submitted', this.signUpForm.value);

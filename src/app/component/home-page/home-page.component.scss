@@ -1,0 +1,143 @@
+// Couleurs Principales
+$primary-color: #007bff; // Couleur principale
+$hover-color: darken($primary-color, 10%); // Couleur au survol
+$text-color: #333; // Couleur du texte
+$link-color: $primary-color; // Couleur des liens
+$link-hover-color: $hover-color; // Couleur des liens au survol
+$background-color: #f9f9f9; // Couleur de fond générale
+
+// Couleurs pour les Cartes d'Article
+$card-bg-color: #ffffff; // Couleur de fond des cartes
+$card-border-color: #e0e0e0; // Couleur de la bordure des cartes
+$card-shadow: rgba(0, 0, 0, 0.1); // Ombre des cartes
+$card-hover-bg: #f9f9f9; // Couleur de fond au survol des cartes
+$author-color: #555; // Couleur pour le nom de l'auteur
+$content-color: $text-color; // Couleur pour le contenu des articles (réutilisation de la couleur de texte)
+
+// Couleurs pour les Notifications
+$notification-bg-color: #f0f8ff; // Couleur de fond de la notification
+$notification-border-color: $primary-color; // Couleur de la bordure de la notification
+$notification-text-color: $text-color; // Couleur du texte de la notification
+$notification-close-color: #ff0000; // Couleur du bouton de fermeture
+
+
+// Styles pour la notification
+.notification {
+  position: fixed; // Position fixe pour rester visible pendant le défilement
+  top: 20px; // Distance du haut de la page
+  right: 20px; // Distance du bord droit de la page
+  background-color: $notification-bg-color; // Couleur de fond
+  border: 1px solid $notification-border-color; // Bordure
+  border-radius: 8px; // Coins arrondis
+  padding: 15px 20px; // Rembourrage interne
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); // Ombre pour un effet de profondeur
+  z-index: 1000; // Assurez-vous que la notification est au-dessus des autres éléments
+  transition: opacity 0.3s ease-in-out; // Transition pour l'apparition/disparition
+
+  p {
+    margin: 0; // Supprimez les marges par défaut
+    color: $notification-text-color; // Couleur du texte
+    font-size: 16px; // Taille de la police
+  }
+
+  .close-btn {
+    background: none; // Pas de fond
+    border: none; // Pas de bordure
+    color: $notification-close-color; // Couleur du bouton de fermeture
+    font-size: 20px; // Taille de la police
+    cursor: pointer; // Curseur pointeur
+    position: absolute; // Position absolue pour le placer en haut à droite
+    top: 5px; // Distance du haut
+    right: 10px; // Distance du côté droit
+
+    &:hover {
+      color: darken($notification-close-color, 10%); // Couleur au survol
+    }
+  }
+}
+
+
+
+// Styles pour le conteneur des cartes
+.cards-container {
+  display: flex; // Disposition flexible
+  flex-wrap: wrap; // Les cartes passent à la ligne si nécessaire
+  justify-content: center; // Centre les cartes
+  margin: 20px; // Marge autour du conteneur
+}
+
+// Styles pour chaque article
+app-article {
+  background-color: $card-bg-color; // Couleur de fond de la carte
+  border: 1px solid $card-border-color; // Bordure de la carte
+  border-radius: 8px; // Coins arrondis
+  box-shadow: 0 2px 4px $card-shadow; // Ombre pour un effet de profondeur
+  margin: 15px; // Marge entre les cartes
+  padding: 20px; // Rembourrage interne
+  width: 300px; // Largeur fixe de chaque carte
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; // Transition douce
+
+  &:hover {
+    background-color: $card-hover-bg; // Changement de couleur au survol
+    box-shadow: 0 4px 8px $card-shadow; // Ombre plus prononcée au survol
+  }
+
+  // Styles pour le titre de l'article
+  h1 {
+    font-size: 22px; // Taille de la police pour le titre
+    margin: 0; // Supprimez les marges par défaut
+    color: $content-color; // Couleur du texte
+  }
+
+  // Styles pour le nom de l'auteur
+  .author {
+    font-size: 16px; // Taille de la police
+    color: $author-color; // Couleur du texte
+    margin: 5px 0; // Espacement autour du nom
+  }
+
+  // Styles pour le contenu de l'article
+  .content {
+    color: $content-color; // Couleur du texte
+    margin: 10px 0; // Espacement autour du contenu
+  }
+
+  // Styles pour l'image de l'article
+  .article-image {
+    max-width: 100%; // S'assure que l'image ne dépasse pas la largeur de la carte
+    height: auto; // Garde les proportions de l'image
+    border-radius: 4px; // Coins arrondis pour l'image
+    margin: 10px 0; // Espacement autour de l'image
+  }
+
+  // Styles pour le bouton "Liker"
+  .like-btn {
+    background-color: $notification-border-color; // Couleur de fond du bouton
+    color: #fff; // Couleur du texte
+    border: none; // Pas de bordure
+    border-radius: 5px; // Coins arrondis
+    padding: 8px 12px; // Rembourrage interne
+    cursor: pointer; // Curseur pointeur
+    transition: background-color 0.3s ease; // Transition douce
+
+    &:hover {
+      background-color: darken($notification-border-color, 10%); // Couleur au survol
+    }
+  }
+
+  // Styles pour le bouton de publication
+  .toggle-pub-btn {
+    background-color: #28a745; // Couleur de fond du bouton
+    color: #fff; // Couleur du texte
+    border: none; // Pas de bordure
+    border-radius: 5px; // Coins arrondis
+    padding: 8px 12px; // Rembourrage interne
+    cursor: pointer; // Curseur pointeur
+    margin-left: 10px; // Marge gauche
+    transition: background-color 0.3s ease; // Transition douce
+
+    &:hover {
+      background-color: darken(#28a745, 10%); // Couleur au survol
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<form #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()">
+<form class="contact-form" #contactForm="ngForm" (ngSubmit)="contactForm.valid && onSubmit()">
   <div class="form-status">
     Le formulaire est-il soumis ? {{ contactForm.submitted }}
   </div>
@@ -19,7 +19,7 @@
       id="lastname"
       name="lastname"
       type="text"
-      class="form-input"
+      class="input-field"
       [(ngModel)]="newMessage.lastname"
       #lastname="ngModel"
       required
@@ -45,7 +45,7 @@
       id="firstname"
       name="firstname"
       type="text"
-      class="form-input"
+      class="input-field"
       [(ngModel)]="newMessage.firstname"
       #firstname="ngModel"
       required
@@ -71,7 +71,7 @@
       id="email"
       name="email"
       type="email"
-      class="form-input"
+      class="input-field"
       [(ngModel)]="newMessage.email"
       #email="ngModel"
       required
@@ -94,7 +94,7 @@
     <textarea
       id="content"
       name="content"
-      class="form-textarea"
+      class="textarea-field"
       [(ngModel)]="newMessage.content"
       #content="ngModel"
       required
@@ -115,6 +115,6 @@
     } }
   </fieldset>
 
-  <button type="reset" class="form-button">Restaurer</button>
-  <button type="submit" class="form-button">Sauvegarder</button>
+  <button type="reset" class="form-button reset-button">Restaurer</button>
+  <button type="submit" class="form-button submit-button">Sauvegarder</button>
 </form>

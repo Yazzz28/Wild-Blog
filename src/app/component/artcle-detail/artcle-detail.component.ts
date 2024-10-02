@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
-import { Article } from '../models/article.model';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Article } from '../../models/article.model';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { ArticleComponent } from '../article/article.component';
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'app-artcle-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, ArticleComponent],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss',
+  imports: [ FormsModule ],
+  templateUrl: './artcle-detail.component.html',
+  styleUrl: './artcle-detail.component.scss'
 })
-export class HomePageComponent {
+export class ArtcleDetailComponent implements OnInit {
+
+  route = inject(ActivatedRoute);
+  articleId: number | null = null;
+  article: Article | undefined;
+
   articles: Article[] = [
     {
       id: 1,
@@ -46,13 +49,19 @@ export class HomePageComponent {
     },
   ];
 
-  liked: string = '';
+  ngOnInit(): void {
+    // Récupération de l'ID depuis l'URL
+    this.route.params.subscribe(params => {
+      this.articleId = +params['id']; // Convertit l'ID en nombre
 
-  handleNotification(message: any) {
-    this.liked = message;
+      // Recherche de l'article correspondant à l'ID
+      this.article = this.articles.find(article => article.id === this.articleId);
+    });
   }
 
-  isNoPublication(): boolean {
-    return this.articles.every((article) => !article.isPublished);
+  togglePublication(): void {
+    if (this.article) {
+      this.article.isPublished = !this.article.isPublished;
+    }
   }
 }

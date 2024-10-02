@@ -1,17 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Article } from '../models/article.model';
+import { Article } from '../../models/article.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Ne pas importer ArticleComponent ici
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent {
-  @Input() article?: Article;
+  @Input() article!: Article;
 
   @Output() liked = new EventEmitter<string>();
 
@@ -25,5 +26,5 @@ export class ArticleComponent {
     if (this.article) {
       this.liked.emit(`L'article ${this.article.title} vient d'être liké`);
     }
-  }  
+  }
 }
